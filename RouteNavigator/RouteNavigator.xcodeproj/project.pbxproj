@@ -12,6 +12,7 @@
 		49E7E85C281FF8F600F32D5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E7E85B281FF8F600F32D5A /* Assets.xcassets */; };
 		49E7E85F281FF8F600F32D5A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E7E85E281FF8F600F32D5A /* Preview Assets.xcassets */; };
 		49E7E8662820067700F32D5A /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7E8652820067700F32D5A /* ContentViewModel.swift */; };
+		AD4E4EDD28200BD500450956 /* Theo in Frameworks */ = {isa = PBXBuildFile; productRef = AD4E4EDC28200BD500450956 /* Theo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD4E4EDD28200BD500450956 /* Theo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,9 +57,9 @@
 			children = (
 				49E7E857281FF8F500F32D5A /* RouteNavigatorApp.swift */,
 				49E7E859281FF8F500F32D5A /* ContentView.swift */,
+				49E7E8652820067700F32D5A /* ContentViewModel.swift */,
 				49E7E85B281FF8F600F32D5A /* Assets.xcassets */,
 				49E7E85D281FF8F600F32D5A /* Preview Content */,
-				49E7E8652820067700F32D5A /* ContentViewModel.swift */,
 			);
 			path = RouteNavigator;
 			sourceTree = "<group>";
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = RouteNavigator;
+			packageProductDependencies = (
+				AD4E4EDC28200BD500450956 /* Theo */,
+			);
 			productName = RouteNavigator;
 			productReference = 49E7E854281FF8F500F32D5A /* RouteNavigator.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 49E7E84B281FF8F500F32D5A;
+			packageReferences = (
+				AD4E4EDB28200BD500450956 /* XCRemoteSwiftPackageReference "Neo4j-Swift" */,
+			);
 			productRefGroup = 49E7E855281FF8F500F32D5A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -347,6 +355,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD4E4EDB28200BD500450956 /* XCRemoteSwiftPackageReference "Neo4j-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Neo4j-Swift/Neo4j-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD4E4EDC28200BD500450956 /* Theo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD4E4EDB28200BD500450956 /* XCRemoteSwiftPackageReference "Neo4j-Swift" */;
+			productName = Theo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 49E7E84C281FF8F500F32D5A /* Project object */;
 }
