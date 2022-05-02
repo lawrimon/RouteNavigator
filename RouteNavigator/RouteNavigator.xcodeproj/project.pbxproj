@@ -13,6 +13,7 @@
 		49E7E85F281FF8F600F32D5A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E7E85E281FF8F600F32D5A /* Preview Assets.xcassets */; };
 		49E7E8662820067700F32D5A /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7E8652820067700F32D5A /* ContentViewModel.swift */; };
 		AD4E4EDD28200BD500450956 /* Theo in Frameworks */ = {isa = PBXBuildFile; productRef = AD4E4EDC28200BD500450956 /* Theo */; };
+		AD4E4EDF28200D9700450956 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E4EDE28200D9700450956 /* ContentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		49E7E85B281FF8F600F32D5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E7E85E281FF8F600F32D5A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49E7E8652820067700F32D5A /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		AD4E4EDE28200D9700450956 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				49E7E857281FF8F500F32D5A /* RouteNavigatorApp.swift */,
 				49E7E859281FF8F500F32D5A /* ContentView.swift */,
 				49E7E8652820067700F32D5A /* ContentViewModel.swift */,
+				AD4E4EDE28200D9700450956 /* ContentModel.swift */,
 				49E7E85B281FF8F600F32D5A /* Assets.xcassets */,
 				49E7E85D281FF8F600F32D5A /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49E7E85A281FF8F500F32D5A /* ContentView.swift in Sources */,
+				AD4E4EDF28200D9700450956 /* ContentModel.swift in Sources */,
 				49E7E858281FF8F500F32D5A /* RouteNavigatorApp.swift in Sources */,
 				49E7E8662820067700F32D5A /* ContentViewModel.swift in Sources */,
 			);
