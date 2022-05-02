@@ -11,6 +11,7 @@
 		49E7E85A281FF8F500F32D5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7E859281FF8F500F32D5A /* ContentView.swift */; };
 		49E7E85C281FF8F600F32D5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E7E85B281FF8F600F32D5A /* Assets.xcassets */; };
 		49E7E85F281FF8F600F32D5A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E7E85E281FF8F600F32D5A /* Preview Assets.xcassets */; };
+		49E7E8662820067700F32D5A /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7E8652820067700F32D5A /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		49E7E859281FF8F500F32D5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		49E7E85B281FF8F600F32D5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E7E85E281FF8F600F32D5A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		49E7E8652820067700F32D5A /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				49E7E859281FF8F500F32D5A /* ContentView.swift */,
 				49E7E85B281FF8F600F32D5A /* Assets.xcassets */,
 				49E7E85D281FF8F600F32D5A /* Preview Content */,
+				49E7E8652820067700F32D5A /* ContentViewModel.swift */,
 			);
 			path = RouteNavigator;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			files = (
 				49E7E85A281FF8F500F32D5A /* ContentView.swift in Sources */,
 				49E7E858281FF8F500F32D5A /* RouteNavigatorApp.swift in Sources */,
+				49E7E8662820067700F32D5A /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +276,7 @@
 				DEVELOPMENT_TEAM = Q6Y37696U6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +306,7 @@
 				DEVELOPMENT_TEAM = Q6Y37696U6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
