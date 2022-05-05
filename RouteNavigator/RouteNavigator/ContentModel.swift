@@ -9,6 +9,11 @@ import Foundation
 import Theo
 import MapKit
 
+struct Coordinate: Identifiable {
+    var coordinate: CLLocationCoordinate2D
+    let id = UUID()
+}
+
 final class ContentModel: ObservableObject {
    
     private var client: BoltClient?
@@ -16,7 +21,7 @@ final class ContentModel: ObservableObject {
     private var query = "Match(n: Intersection) RETURN n.lat, n.lon, n.node_osm_id LIMIT 768"
     
     
-    func queryTest() -> [CLLocationCoordinate2D]? {
+    func queryTest() -> [Coordinate]? {
                 
         do {
         self.client = try BoltClient(hostname: "6e2c8662.databases.neo4j.io",
@@ -30,7 +35,7 @@ final class ContentModel: ObservableObject {
         
         guard let client = self.client else {return nil}
 
-        var coordinates: [CLLocationCoordinate2D] = []
+        var coordinates: [Coordinate] = []
         
         let result = client.connectSync()
         switch result {
@@ -45,7 +50,9 @@ final class ContentModel: ObservableObject {
             case let .success(queryResult):
                 for (index, key_value) in queryResult.rows.enumerated() {
                     print("\(index): \(key_value)");
-                    coordinates.append(CLLocationCoordinate2D(latitude: key_value["n.lat"] as! CLLocationDegrees, longitude: key_value["n.lon"] as! CLLocationDegrees))
+                    coordinates.append(Coordinate(coordinate: CLLocationCoordinate2D(
+                        latitude: key_value["n.lat"] as! CLLocationDegrees,
+                        longitude: key_value["n.lon"] as! CLLocationDegrees)))
                 }
             }
         }

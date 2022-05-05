@@ -10,15 +10,19 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
-   
+    @StateObject private var model = ContentModel()
+
+    @State private var items: [Coordinate] = []
+    
     var body: some View {
-        Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.createAnnotationItems()) { item in
+        Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: items) { item in
             MapPin(coordinate: item.coordinate)
         }
         .ignoresSafeArea()
         .accentColor(Color(.systemPink))
         .onAppear {
             viewModel.checkIfLocationServicesIsEnabled()
+            items = model.queryTest()!
         }
     }
 }
