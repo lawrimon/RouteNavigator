@@ -10,21 +10,15 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
-    @StateObject private var model = ContentModel()
    
     var body: some View {
-        ZStack {
-            Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
-                    .ignoresSafeArea()
-                    .accentColor(Color(.systemPink))
-                    .onAppear{
-                        viewModel.checkIfLocationServicesIsEnabled()
-                }
-            Button ("queryTest"){
-                model.queryTest()
-            }
-            .buttonStyle(.bordered)
-            .background(.black)
+        Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.createAnnotationItems()) { item in
+            MapPin(coordinate: item.coordinate)
+        }
+        .ignoresSafeArea()
+        .accentColor(Color(.systemPink))
+        .onAppear {
+            viewModel.checkIfLocationServicesIsEnabled()
         }
     }
 }

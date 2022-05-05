@@ -14,11 +14,28 @@ enum MapDetails {
 
 }
 
+struct AnnotationItem: Identifiable {
+    var coordinate: CLLocationCoordinate2D
+    let id = UUID()
+}
+
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
     
     @Published var region = MKCoordinateRegion(center: MapDetails.startingLocation , span: MapDetails.defaultSpan)
     
+    var model = ContentModel()
+    var annotationItems: [AnnotationItem] = []
+
+    
     var locationManager: CLLocationManager?
+    
+    func createAnnotationItems() -> [AnnotationItem] {
+        var annotationItems: [AnnotationItem] = []
+        for coordinate in model.queryTest()! {
+            annotationItems.append(AnnotationItem(coordinate: coordinate))
+        }
+        return annotationItems
+    }
     
     func checkIfLocationServicesIsEnabled() {
         
