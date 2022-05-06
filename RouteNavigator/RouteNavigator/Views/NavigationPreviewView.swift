@@ -56,6 +56,7 @@ extension NavigationPreviewView {
             Image(systemName: "map.circle")
                 .resizable()
                 .scaledToFill()
+                .foregroundColor(Color.blue)
                 .frame(width: 100, height: 100)
                 .cornerRadius(10)
         }
@@ -66,12 +67,12 @@ extension NavigationPreviewView {
     
     private var titleSection: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("\(navigationPoint.id)")
+            Text(verbatim: "\(navigationPoint.id)")
                 .font(.system(size: 18))
                 .fontWeight(.bold)
             Text("Lat: \(navigationPoint.coordinate.latitude)")
                 .font(.subheadline)
-            Text("Lon: \(navigationPoint.coordinate.longitude)")
+            Text("Long: \(navigationPoint.coordinate.longitude)")
                 .font(.subheadline)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -79,9 +80,9 @@ extension NavigationPreviewView {
     
     private var setPointButton: some View {
         Button {
-            
+            navigationViewModel.setPointButtonPressed()
         } label: {
-            Text("Set point")
+            Text(navigationViewModel.navigationText)
                 .font(.headline)
                 .frame(width: 125, height: 30)
         }

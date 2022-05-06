@@ -39,7 +39,7 @@ extension NavigationView {
     private var header: some View {
         VStack {
             Button(action: navigationViewModel.toggleNavigationList) {
-                Text("\(navigationViewModel.mapLocation.id)")
+                Text(verbatim: "\(navigationViewModel.mapLocation.id)")
                     .font(.title2)
                     .fontWeight(.black)
                     .foregroundColor(.primary)

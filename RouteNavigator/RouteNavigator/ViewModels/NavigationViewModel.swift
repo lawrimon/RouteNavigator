@@ -23,9 +23,14 @@ class NavigationViewModel: ObservableObject {
         }
     }
     
+    // Two set points
+    @Published var navigationTouple: (startPoint: NavigationPoint, targetPoint: NavigationPoint)?
+    @Published var startPoint: Bool = true
+    @Published var navigationText: String = "Start point"
+    
     // Current region on map
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion()
-    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+    let mapSpan = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
     
     // Show list of navigation points
     @Published var showNavigationList: Bool = false
@@ -75,6 +80,24 @@ class NavigationViewModel: ObservableObject {
         // nextIndex is valid
         let nextNavigationPoint = navigationPoints[nextIndex]
         showNextNavigationPoint(navigationPoint: nextNavigationPoint)
+    }
+    
+    func setPointButtonPressed() {
+        // Get current navigation point
+        let currentPoint = mapLocation
+        
+        if !startPoint {
+            navigationTouple?.targetPoint = currentPoint
+            print("Target: \(currentPoint.id)")
+        }
+        else {
+            navigationTouple?.startPoint = currentPoint
+            startPoint = false
+            navigationText = "Target point"
+            print("Start: \(currentPoint.id)")
+        }
+        
+        
     }
     
 }

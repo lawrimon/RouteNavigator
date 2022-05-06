@@ -45,11 +45,11 @@ extension NavigationListView {
                 .frame(width: 45, height: 45)
                 .cornerRadius(10)
             VStack (alignment: .leading){
-                Text("ID: \(navigationPoint.id)")
+                Text(verbatim: "\(navigationPoint.id)")
                     .font(.headline)
                 Text("Lat: \(navigationPoint.coordinate.latitude)")
                     .font(.subheadline)
-                Text("Lon: \(navigationPoint.coordinate.longitude)")
+                Text("Long: \(navigationPoint.coordinate.longitude)")
                     .font(.subheadline)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
