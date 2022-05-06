@@ -10,8 +10,8 @@ import Theo
 import MapKit
 
 struct Coordinate: Identifiable {
-    var coordinate: CLLocationCoordinate2D
-    let id = UUID()
+    let coordinate: CLLocationCoordinate2D
+    let id: UInt64
 }
 
 final class ContentModel: ObservableObject {
@@ -52,7 +52,7 @@ final class ContentModel: ObservableObject {
                     print("\(index): \(key_value)");
                     coordinates.append(Coordinate(coordinate: CLLocationCoordinate2D(
                         latitude: key_value["n.lat"] as! CLLocationDegrees,
-                        longitude: key_value["n.lon"] as! CLLocationDegrees)))
+                        longitude: key_value["n.lon"] as! CLLocationDegrees), id: key_value["n.node_osm_id"] as! UInt64))
                 }
             }
         }

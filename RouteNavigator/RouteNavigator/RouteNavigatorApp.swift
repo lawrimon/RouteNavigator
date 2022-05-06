@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct RouteNavigatorApp: App {
+    
+    @StateObject private var navigationViewModel = NavigationViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView()
+                .environmentObject(navigationViewModel)
         }
     }
 }
