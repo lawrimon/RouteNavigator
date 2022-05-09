@@ -25,7 +25,8 @@ class NavigationViewModel: ObservableObject {
     
     // Two set points
     @Published var navigationTouple: (startPoint: NavigationPoint, targetPoint: NavigationPoint)?
-    @Published var startPoint: Bool = true
+    private var startPoint: Bool = true
+    @Published var targetPoint: Bool = false
     @Published var navigationText: String = "Start point"
     
     // Current region on map
@@ -36,7 +37,7 @@ class NavigationViewModel: ObservableObject {
     @Published var showNavigationList: Bool = false
     
     init() {
-        let navigationPoints = navigationModel.queryTest()!
+        let navigationPoints = navigationModel.getNavigationPoints()!
         self.navigationPoints = navigationPoints
         self.mapLocation = navigationPoints.first!
         
@@ -88,6 +89,7 @@ class NavigationViewModel: ObservableObject {
         
         if !startPoint {
             navigationTouple?.targetPoint = currentPoint
+            targetPoint = true
             print("Target: \(currentPoint.id)")
         }
         else {

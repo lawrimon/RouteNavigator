@@ -22,6 +22,9 @@ struct NavigationPreviewView: View {
             
             
             VStack(spacing: 8) {
+                if navigationViewModel.targetPoint {
+                    navigationButton
+                }
                 setPointButton
                 nextButton
             }
@@ -30,7 +33,7 @@ struct NavigationPreviewView: View {
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(.ultraThinMaterial)
-                .offset(y: 96)
+                .offset(y: 94)
         )
         .cornerRadius(10)
     }
@@ -98,5 +101,17 @@ extension NavigationPreviewView {
                 .frame(width: 125, height: 30)
         }
         .buttonStyle(.bordered)
+    }
+    
+    private var navigationButton: some View {
+        Button {
+        } label: {
+            Text("Start navigation")
+                .font(.headline)
+                .frame(width: 125, height: 50)
+        }
+        .tint(.green)
+        .buttonStyle(.borderedProminent)
+        .offset(y: -18)
     }
 }

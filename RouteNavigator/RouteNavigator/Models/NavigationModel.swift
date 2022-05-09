@@ -22,12 +22,8 @@ struct NavigationPoint: Identifiable, Equatable {
 final class NavigationModel {
    
     private var client: BoltClient?
-    
-    private var query = "Match(n: Intersection) RETURN n.lat, n.lon, n.node_osm_id LIMIT 768"
-    
-    
-    func queryTest() -> [NavigationPoint]? {
-                
+
+    init() {
         do {
         self.client = try BoltClient(hostname: "6e2c8662.databases.neo4j.io",
                                     port: 7687,
@@ -37,9 +33,14 @@ final class NavigationModel {
         } catch {
             print("Failed during connection configuration")
         }
+    }
+    
+    func getNavigationPoints() -> [NavigationPoint]? {
         
         guard let client = self.client else {return nil}
 
+        let query = "Match(n: Intersection) RETURN n.lat, n.lon, n.node_osm_id LIMIT 768"
+        
         var coordinates: [NavigationPoint] = []
         
         let result = client.connectSync()
@@ -62,6 +63,10 @@ final class NavigationModel {
             }
         }
         return coordinates
-}
+    }
+    
+    func getRoute() {
+        
+    }
 
 }
