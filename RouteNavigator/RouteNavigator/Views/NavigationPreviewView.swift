@@ -105,6 +105,7 @@ extension NavigationPreviewView {
     
     private var navigationButton: some View {
         Button {
+            navigationViewModel.navigationButtonPressed()
         } label: {
             Text("Start navigation")
                 .font(.headline)

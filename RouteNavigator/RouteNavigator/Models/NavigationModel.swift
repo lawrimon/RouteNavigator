@@ -35,12 +35,10 @@ final class NavigationModel {
         }
     }
     
-    func getNavigationPoints() -> [NavigationPoint]? {
+    func initNavigationPoints() -> [NavigationPoint]? {
         
         guard let client = self.client else {return nil}
-
         let query = "Match(n: Intersection) RETURN n.lat, n.lon, n.node_osm_id LIMIT 768"
-        
         var coordinates: [NavigationPoint] = []
         
         let result = client.connectSync()
@@ -65,8 +63,32 @@ final class NavigationModel {
         return coordinates
     }
     
-    func getRoute() {
+    func getRoute(start: NavigationPoint, target: NavigationPoint) -> [NavigationPoint]? {
         
+        guard let client = self.client else {return nil}
+        let query = "MATCH(start: Intersection {node_osm_id:\(start.id)}) WITH start MATCH (end: Intersection {node_osm_id:\(target.id)}) CALL apoc.algo.dijkstra(start,end, 'ROUTE', 'distance') YIELD path with nodes(path) as x UNWIND x as y RETURN y.lat, y.lon, y.node_osm_id"
+        var route: [NavigationPoint] = []
+        
+        let result = client.connectSync()
+        switch result {
+        case .failure(_):
+          print("Error while connecting")
+        case .success(_):
+            print("Success while connecting")
+            let result = client.executeCypherSync(query)
+            switch result {
+            case let .failure(error):
+                print("Error while query \(error)")
+            case let .success(queryResult):
+                for (index, key_value) in queryResult.rows.enumerated() {
+                    print("\(index): \(key_value)");
+                    route.append(NavigationPoint(coordinate: CLLocationCoordinate2D(
+                        latitude: key_value["y.lat"] as! CLLocationDegrees,
+                        longitude: key_value["y.lon"] as! CLLocationDegrees), id: key_value["y.node_osm_id"] as! UInt64))
+                }
+            }
+        }
+        return route
     }
 
 }
