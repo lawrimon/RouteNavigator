@@ -14,7 +14,8 @@ struct NavigationView: View {
     
     var body: some View {
         ZStack {
-            mapLayer
+            //mapLayer
+            MapView()
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {

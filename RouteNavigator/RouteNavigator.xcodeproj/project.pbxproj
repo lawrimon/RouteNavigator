@@ -20,6 +20,7 @@
 		AD233D9A2825372A000C2063 /* NavigationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D992825372A000C2063 /* NavigationAnnotationView.swift */; };
 		AD4E4EDD28200BD500450956 /* Theo in Frameworks */ = {isa = PBXBuildFile; productRef = AD4E4EDC28200BD500450956 /* Theo */; };
 		AD4E4EDF28200D9700450956 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E4EDE28200D9700450956 /* ContentModel.swift */; };
+		ADCC5D95282CFA28006A7BB0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC5D94282CFA28006A7BB0 /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		AD233D9728252796000C2063 /* NavigationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPreviewView.swift; sourceTree = "<group>"; };
 		AD233D992825372A000C2063 /* NavigationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAnnotationView.swift; sourceTree = "<group>"; };
 		AD4E4EDE28200D9700450956 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
+		ADCC5D94282CFA28006A7BB0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				AD233D9528251EC4000C2063 /* NavigationListView.swift */,
 				AD233D9728252796000C2063 /* NavigationPreviewView.swift */,
 				AD233D992825372A000C2063 /* NavigationAnnotationView.swift */,
+				ADCC5D94282CFA28006A7BB0 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				49E7E85A281FF8F500F32D5A /* ContentView.swift in Sources */,
 				AD233D9828252796000C2063 /* NavigationPreviewView.swift in Sources */,
 				AD4E4EDF28200D9700450956 /* ContentModel.swift in Sources */,
+				ADCC5D95282CFA28006A7BB0 /* MapView.swift in Sources */,
 				AD233D9A2825372A000C2063 /* NavigationAnnotationView.swift in Sources */,
 				AD233D9628251EC4000C2063 /* NavigationListView.swift in Sources */,
 				49E7E858281FF8F500F32D5A /* RouteNavigatorApp.swift in Sources */,
