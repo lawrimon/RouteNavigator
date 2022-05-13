@@ -27,10 +27,7 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        // !!! Implement view.setSelected in PreviewView and ListView von aktueller location
         view.image = UIImage(systemName: "triangle")
-        view.tintColor = .systemRed
         view.scaleUp(duration: 0.2, x: 1, y: 1)
         let selectedAnnotation = view.annotation
         for navigationPoint in mapViewController.navigationViewModel.navigationPoints {
@@ -40,7 +37,7 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
             }
         }
     }
-    
+
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         view.image = UIImage(systemName: "triangle.fill")
         view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)

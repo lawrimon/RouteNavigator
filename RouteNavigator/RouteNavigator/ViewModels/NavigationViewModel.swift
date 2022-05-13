@@ -20,7 +20,6 @@ final class NavigationViewModel: ObservableObject {
     var navigationRoute: [CLLocationCoordinate2D] = []
     var navigationLine: MKPolyline
     
-    
     // Current navigation point
     @Published var mapLocation: NavigationPoint {
         didSet {
@@ -94,7 +93,6 @@ final class NavigationViewModel: ObservableObject {
     func setPointButtonPressed() {
         // Get current navigation point
         let currentPoint = mapLocation
-        
         if startPoint {
             navigationTuple.startPoint = currentPoint
             startPoint = false

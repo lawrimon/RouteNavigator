@@ -59,7 +59,7 @@ extension NavigationPreviewView {
             Image(systemName: "map.circle")
                 .resizable()
                 .scaledToFill()
-                .foregroundColor(Color.blue)
+                .foregroundColor(Color.black)
                 .frame(width: 100, height: 100)
                 .cornerRadius(10)
         }

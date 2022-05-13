@@ -9,8 +9,8 @@ import MapKit
 import SwiftUI
 
 struct MapView: UIViewRepresentable {
-    @EnvironmentObject public var navigationViewModel: NavigationViewModel
-    
+    @EnvironmentObject var navigationViewModel: NavigationViewModel
+        
     func makeCoordinator() -> MapViewCoordinator{
          MapViewCoordinator(self)
     }
@@ -25,6 +25,14 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
         mapView.setRegion(navigationViewModel.mapRegion, animated: true)
+        
+        for annotation in mapView.annotations {
+            if (annotation.coordinate.latitude == navigationViewModel.mapLocation.coordinate.latitude &&
+                annotation.coordinate.longitude == navigationViewModel.mapLocation.coordinate.longitude) {
+                mapView.selectAnnotation(annotation, animated: false)
+            }
+        }
+        
         for overlay in mapView.overlays {
             if overlay is MKPolyline {
                 mapView.removeOverlay(overlay)
