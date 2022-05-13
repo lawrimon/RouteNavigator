@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 import SwiftUI
 
-class NavigationViewModel: ObservableObject {
+final class NavigationViewModel: ObservableObject {
         
     private let navigationModel = NavigationModel()
     
