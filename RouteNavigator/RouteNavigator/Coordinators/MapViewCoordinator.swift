@@ -20,14 +20,14 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "customView")
         annotationView.canShowCallout = false
         //Your custom image icon
-        let image = UIImage(systemName: "triangle.fill")
+        let image = UIImage(systemName: "pin.circle.fill")
         annotationView.image = image
         annotationView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        view.image = UIImage(systemName: "triangle")
+        view.image = UIImage(systemName: "mappin.and.ellipse")
         view.scaleUp(duration: 0.2, x: 1, y: 1)
         let selectedAnnotation = view.annotation
         for navigationPoint in mapViewController.navigationViewModel.navigationPoints {
@@ -39,7 +39,7 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        view.image = UIImage(systemName: "triangle.fill")
+        view.image = UIImage(systemName: "pin.circle.fill")
         view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
     }
     

@@ -23,7 +23,7 @@ struct NavigationAnnotationView: View {
                 .background(accentColor)
                 .cornerRadius(36)
             
-            Image(systemName: "triangle.fill")
+            Image(systemName: "flag.circle.fill")
                 .resizable()
                 .scaledToFit()
                 .foregroundColor(accentColor)
