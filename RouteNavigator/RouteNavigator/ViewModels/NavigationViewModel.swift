@@ -16,6 +16,11 @@ final class NavigationViewModel: ObservableObject {
     // All navigation points
     var navigationPoints: [NavigationPoint]
     
+    // Navigation route
+    var navigationRoute: [CLLocationCoordinate2D] = []
+    var navigationLine: MKPolyline
+    
+    
     // Current navigation point
     @Published var mapLocation: NavigationPoint {
         didSet {
@@ -40,8 +45,9 @@ final class NavigationViewModel: ObservableObject {
         let navigationPoints = navigationModel.initNavigationPoints()!
         self.navigationPoints = navigationPoints
         self.mapLocation = navigationPoints.first!
-        // Just placeholder initialization of navigationTuple
+        // Just placeholder initialization of navigationTuple and navigationLine
         self.navigationTuple = (navigationPoints.first!, navigationPoints.first!)
+        self.navigationLine = MKPolyline()
         
         self.updateMapRegion(navigationPoint: navigationPoints.first!)
     }
@@ -103,7 +109,26 @@ final class NavigationViewModel: ObservableObject {
     }
     
     func navigationButtonPressed() {
-        let route = navigationModel.getRoute(start: navigationTuple.startPoint, target: navigationTuple.targetPoint)
+        navigationRoute.removeAll()
+        let route = navigationModel.getRoute(start: navigationTuple.startPoint, target: navigationTuple.targetPoint)!
+        for point in route {
+            navigationRoute.append(point.coordinate)
+        }
+        navigationLine = MKPolyline(coordinates: navigationRoute, count: navigationRoute.count)
+        
+        var regionRect = (navigationLine.boundingMapRect)
+        let wPadding = regionRect.size.width * 0.25
+        let hPadding = regionRect.size.height * 0.25
+
+        //Add padding to the region
+        regionRect.size.width += wPadding
+        regionRect.size.height += hPadding
+
+        //Center the region on the line
+        regionRect.origin.x -= wPadding / 2
+        regionRect.origin.y -= hPadding / 2
+        
+        mapRegion = MKCoordinateRegion(regionRect)
     }
     
 }

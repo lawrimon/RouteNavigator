@@ -25,7 +25,14 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
         mapView.setRegion(navigationViewModel.mapRegion, animated: true)
+        for overlay in mapView.overlays {
+            if overlay is MKPolyline {
+                mapView.removeOverlay(overlay)
+            }
+        }
+        mapView.addOverlay(navigationViewModel.navigationLine)
     }
+
     
     private func initAnnotations() -> [MKPointAnnotation] {
         var annotations: [MKPointAnnotation] = []
@@ -36,5 +43,7 @@ struct MapView: UIViewRepresentable {
         }
         return annotations
     }
-    
+
 }
+    
+

@@ -6,6 +6,7 @@
 //
 
 import MapKit
+import UIKit
 
 class MapViewCoordinator: NSObject, MKMapViewDelegate {
       var mapViewController: MapView
@@ -19,15 +20,18 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "customView")
         annotationView.canShowCallout = false
         //Your custom image icon
-        annotationView.image = UIImage(systemName: "triangle.fill")
+        let image = UIImage(systemName: "triangle.fill")
+        annotationView.image = image
+        annotationView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         return annotationView
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         // !!! Implement view.setSelected in PreviewView and ListView von aktueller location
-        
-        view.scaleUp(duration: 0.2, x: 1.5, y: 1.5)
+        view.image = UIImage(systemName: "triangle")
+        view.tintColor = .systemRed
+        view.scaleUp(duration: 0.2, x: 1, y: 1)
         let selectedAnnotation = view.annotation
         for navigationPoint in mapViewController.navigationViewModel.navigationPoints {
             if (navigationPoint.coordinate.latitude == selectedAnnotation!.coordinate.latitude &&
@@ -38,8 +42,18 @@ class MapViewCoordinator: NSObject, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        view.transform = CGAffineTransform(scaleX: 1, y: 1)
-
+        view.image = UIImage(systemName: "triangle.fill")
+        view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let routePolyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: routePolyline)
+            renderer.strokeColor = UIColor.systemBlue
+            renderer.lineWidth = 5
+            return renderer
+        }
+        return MKOverlayRenderer()
     }
 }
 
@@ -51,3 +65,5 @@ extension MKAnnotationView {
         }) { (animationCompleted: Bool) -> Void in }
     }
 }
+
+
