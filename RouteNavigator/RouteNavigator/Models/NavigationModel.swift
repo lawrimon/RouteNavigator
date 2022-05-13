@@ -12,7 +12,7 @@ import Theo
 struct NavigationPoint: Identifiable, Equatable {
 
     let coordinate: CLLocationCoordinate2D
-    let id: UInt64
+    let id: Int64
     
     static func == (lhs: NavigationPoint, rhs: NavigationPoint) -> Bool {
         lhs.id == rhs.id
@@ -38,7 +38,7 @@ final class NavigationModel {
     func initNavigationPoints() -> [NavigationPoint]? {
         
         guard let client = self.client else {return nil}
-        let query = "Match(n: Intersection) RETURN n.lat, n.lon, n.node_osm_id LIMIT 768"
+        let query = "Match(n: Intersection) RETURN n"
         var coordinates: [NavigationPoint] = []
         
         let result = client.connectSync()
@@ -53,10 +53,12 @@ final class NavigationModel {
                 print("Error while query \(error)")
             case let .success(queryResult):
                 for (index, key_value) in queryResult.rows.enumerated() {
-                    print("\(index): \(key_value)");
-                    coordinates.append(NavigationPoint(coordinate: CLLocationCoordinate2D(
-                        latitude: key_value["n.lat"] as! CLLocationDegrees,
-                        longitude: key_value["n.lon"] as! CLLocationDegrees), id: key_value["n.node_osm_id"] as! UInt64))
+                    print("\(index): Id: \((key_value["n"] as! Theo.Node).properties["node_osm_id"]!.intValue()!), Lat: \((key_value["n"] as! Theo.Node).properties["lat"] as! CLLocationDegrees), Lon: \((key_value["n"] as! Theo.Node).properties["lon"] as! CLLocationDegrees)")
+                    coordinates.append(NavigationPoint(
+                        coordinate: CLLocationCoordinate2D(
+                            latitude: (key_value["n"] as! Theo.Node).properties["lat"] as! CLLocationDegrees,
+                            longitude: (key_value["n"] as! Theo.Node).properties["lon"] as! CLLocationDegrees),
+                        id: ((key_value["n"] as! Theo.Node).properties["node_osm_id"]!.intValue())!))
                 }
             }
         }
@@ -66,7 +68,7 @@ final class NavigationModel {
     func getRoute(start: NavigationPoint, target: NavigationPoint) -> [NavigationPoint]? {
         
         guard let client = self.client else {return nil}
-        let query = "MATCH(start: Intersection {node_osm_id:\(start.id)}) WITH start MATCH (end: Intersection {node_osm_id:\(target.id)}) CALL apoc.algo.dijkstra(start,end, 'ROUTE', 'distance') YIELD path with nodes(path) as x UNWIND x as y RETURN y.lat, y.lon, y.node_osm_id"
+        let query = "MATCH(start: Intersection {node_osm_id:\(start.id)}) WITH start MATCH (end: Intersection {node_osm_id:\(target.id)}) CALL apoc.algo.dijkstra(start,end, 'ROUTE', 'distance') YIELD path with nodes(path) as nodes WITH apoc.coll.pairsMin(nodes) as pairs UNWIND pairs as p WITH p[0] as a, p[1] as b WITH a,b MATCH(a)-[:NODE]-(awn)-[:NEXT*1..50]-(bwn)-[:NODE]-(b) WITH awn,bwn MATCH path = allShortestPaths( (awn)-[:NEXT*1..50]-(bwn) ) WITH nodes(path) as xwn UNWIND xwn as xosmn MATCH(xosmn)-[:NODE]-(x:OSMNode) RETURN x"
         var route: [NavigationPoint] = []
         
         let result = client.connectSync()
@@ -81,10 +83,12 @@ final class NavigationModel {
                 print("Error while query \(error)")
             case let .success(queryResult):
                 for (index, key_value) in queryResult.rows.enumerated() {
-                    print("\(index): \(key_value)");
-                    route.append(NavigationPoint(coordinate: CLLocationCoordinate2D(
-                        latitude: key_value["y.lat"] as! CLLocationDegrees,
-                        longitude: key_value["y.lon"] as! CLLocationDegrees), id: key_value["y.node_osm_id"] as! UInt64))
+                    print("\(index): Id: \((key_value["x"] as! Theo.Node).properties["node_osm_id"]!.intValue()!), Lat: \((key_value["x"] as! Theo.Node).properties["lat"] as! CLLocationDegrees), Lon: \((key_value["x"] as! Theo.Node).properties["lon"] as! CLLocationDegrees)")
+                    route.append(NavigationPoint(
+                        coordinate: CLLocationCoordinate2D(
+                            latitude: (key_value["x"] as! Theo.Node).properties["lat"] as! CLLocationDegrees,
+                            longitude: (key_value["x"] as! Theo.Node).properties["lon"] as! CLLocationDegrees),
+                        id: ((key_value["x"] as! Theo.Node).properties["node_osm_id"]!.intValue())!))
                 }
             }
         }
