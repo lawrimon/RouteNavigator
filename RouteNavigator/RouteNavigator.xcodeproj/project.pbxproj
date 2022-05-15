@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		49E7E858281FF8F500F32D5A /* RouteNavigatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7E857281FF8F500F32D5A /* RouteNavigatorApp.swift */; };
-		49E7E85A281FF8F500F32D5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7E859281FF8F500F32D5A /* ContentView.swift */; };
 		49E7E85C281FF8F600F32D5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E7E85B281FF8F600F32D5A /* Assets.xcassets */; };
 		49E7E85F281FF8F600F32D5A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E7E85E281FF8F600F32D5A /* Preview Assets.xcassets */; };
-		49E7E8662820067700F32D5A /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7E8652820067700F32D5A /* ContentViewModel.swift */; };
 		AD233D90282508FA000C2063 /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D8F282508FA000C2063 /* NavigationModel.swift */; };
 		AD233D9228250925000C2063 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D9128250925000C2063 /* NavigationView.swift */; };
 		AD233D9428250FBA000C2063 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D9328250FBA000C2063 /* NavigationViewModel.swift */; };
@@ -19,27 +17,38 @@
 		AD233D9828252796000C2063 /* NavigationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D9728252796000C2063 /* NavigationPreviewView.swift */; };
 		AD233D9A2825372A000C2063 /* NavigationAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D992825372A000C2063 /* NavigationAnnotationView.swift */; };
 		AD4E4EDD28200BD500450956 /* Theo in Frameworks */ = {isa = PBXBuildFile; productRef = AD4E4EDC28200BD500450956 /* Theo */; };
-		AD4E4EDF28200D9700450956 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD4E4EDE28200D9700450956 /* ContentModel.swift */; };
 		AD8750F2282E6359009B9327 /* MapViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8750F1282E6359009B9327 /* MapViewCoordinator.swift */; };
 		ADCC5D95282CFA28006A7BB0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC5D94282CFA28006A7BB0 /* MapView.swift */; };
+		ADE3920328317B9F00044FE5 /* RouteNavigatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE3920228317B9F00044FE5 /* RouteNavigatorTests.swift */; };
+		ADE3920A28317DB900044FE5 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D9328250FBA000C2063 /* NavigationViewModel.swift */; };
+		ADE3920B28317DBC00044FE5 /* NavigationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD233D8F282508FA000C2063 /* NavigationModel.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ADE3920428317B9F00044FE5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49E7E84C281FF8F500F32D5A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49E7E853281FF8F500F32D5A;
+			remoteInfo = RouteNavigator;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		49E7E854281FF8F500F32D5A /* RouteNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouteNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E7E857281FF8F500F32D5A /* RouteNavigatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavigatorApp.swift; sourceTree = "<group>"; };
-		49E7E859281FF8F500F32D5A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		49E7E85B281FF8F600F32D5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E7E85E281FF8F600F32D5A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		49E7E8652820067700F32D5A /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		AD233D8F282508FA000C2063 /* NavigationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationModel.swift; sourceTree = "<group>"; };
 		AD233D9128250925000C2063 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		AD233D9328250FBA000C2063 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		AD233D9528251EC4000C2063 /* NavigationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationListView.swift; sourceTree = "<group>"; };
 		AD233D9728252796000C2063 /* NavigationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationPreviewView.swift; sourceTree = "<group>"; };
 		AD233D992825372A000C2063 /* NavigationAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationAnnotationView.swift; sourceTree = "<group>"; };
-		AD4E4EDE28200D9700450956 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 		AD8750F1282E6359009B9327 /* MapViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewCoordinator.swift; sourceTree = "<group>"; };
 		ADCC5D94282CFA28006A7BB0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		ADE3920028317B9E00044FE5 /* RouteNavigatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RouteNavigatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADE3920228317B9F00044FE5 /* RouteNavigatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNavigatorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +60,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADE391FD28317B9E00044FE5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -58,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				49E7E856281FF8F500F32D5A /* RouteNavigator */,
+				ADE3920128317B9F00044FE5 /* RouteNavigatorTests */,
 				49E7E855281FF8F500F32D5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				49E7E854281FF8F500F32D5A /* RouteNavigator.app */,
+				ADE3920028317B9E00044FE5 /* RouteNavigatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,7 +113,6 @@
 		AD233D8A28250706000C2063 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				49E7E859281FF8F500F32D5A /* ContentView.swift */,
 				AD233D9128250925000C2063 /* NavigationView.swift */,
 				AD233D9528251EC4000C2063 /* NavigationListView.swift */,
 				AD233D9728252796000C2063 /* NavigationPreviewView.swift */,
@@ -108,7 +125,6 @@
 		AD233D8B28250727000C2063 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AD4E4EDE28200D9700450956 /* ContentModel.swift */,
 				AD233D8F282508FA000C2063 /* NavigationModel.swift */,
 			);
 			path = Models;
@@ -117,7 +133,6 @@
 		AD233D8C2825072D000C2063 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				49E7E8652820067700F32D5A /* ContentViewModel.swift */,
 				AD233D9328250FBA000C2063 /* NavigationViewModel.swift */,
 			);
 			path = ViewModels;
@@ -129,6 +144,14 @@
 				AD8750F1282E6359009B9327 /* MapViewCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		ADE3920128317B9F00044FE5 /* RouteNavigatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				ADE3920228317B9F00044FE5 /* RouteNavigatorTests.swift */,
+			);
+			path = RouteNavigatorTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +177,24 @@
 			productReference = 49E7E854281FF8F500F32D5A /* RouteNavigator.app */;
 			productType = "com.apple.product-type.application";
 		};
+		ADE391FF28317B9E00044FE5 /* RouteNavigatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADE3920828317B9F00044FE5 /* Build configuration list for PBXNativeTarget "RouteNavigatorTests" */;
+			buildPhases = (
+				ADE391FC28317B9E00044FE5 /* Sources */,
+				ADE391FD28317B9E00044FE5 /* Frameworks */,
+				ADE391FE28317B9E00044FE5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ADE3920528317B9F00044FE5 /* PBXTargetDependency */,
+			);
+			name = RouteNavigatorTests;
+			productName = RouteNavigatorTests;
+			productReference = ADE3920028317B9E00044FE5 /* RouteNavigatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -161,11 +202,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					49E7E853281FF8F500F32D5A = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					ADE391FF28317B9E00044FE5 = {
+						CreatedOnToolsVersion = 13.3.1;
+						TestTargetID = 49E7E853281FF8F500F32D5A;
 					};
 				};
 			};
@@ -186,6 +231,7 @@
 			projectRoot = "";
 			targets = (
 				49E7E853281FF8F500F32D5A /* RouteNavigator */,
+				ADE391FF28317B9E00044FE5 /* RouteNavigatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +246,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADE391FE28317B9E00044FE5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -207,22 +260,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49E7E85A281FF8F500F32D5A /* ContentView.swift in Sources */,
 				AD233D9828252796000C2063 /* NavigationPreviewView.swift in Sources */,
-				AD4E4EDF28200D9700450956 /* ContentModel.swift in Sources */,
 				ADCC5D95282CFA28006A7BB0 /* MapView.swift in Sources */,
 				AD8750F2282E6359009B9327 /* MapViewCoordinator.swift in Sources */,
 				AD233D9A2825372A000C2063 /* NavigationAnnotationView.swift in Sources */,
 				AD233D9628251EC4000C2063 /* NavigationListView.swift in Sources */,
 				49E7E858281FF8F500F32D5A /* RouteNavigatorApp.swift in Sources */,
 				AD233D9428250FBA000C2063 /* NavigationViewModel.swift in Sources */,
-				49E7E8662820067700F32D5A /* ContentViewModel.swift in Sources */,
 				AD233D9228250925000C2063 /* NavigationView.swift in Sources */,
 				AD233D90282508FA000C2063 /* NavigationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ADE391FC28317B9E00044FE5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ADE3920A28317DB900044FE5 /* NavigationViewModel.swift in Sources */,
+				ADE3920328317B9F00044FE5 /* RouteNavigatorTests.swift in Sources */,
+				ADE3920B28317DBC00044FE5 /* NavigationModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ADE3920528317B9F00044FE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49E7E853281FF8F500F32D5A /* RouteNavigator */;
+			targetProxy = ADE3920428317B9F00044FE5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		49E7E860281FF8F600F32D5A /* Debug */ = {
@@ -401,6 +469,44 @@
 			};
 			name = Release;
 		};
+		ADE3920628317B9F00044FE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT588WHFZU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dhbw.RouteNavigatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNavigator.app/RouteNavigator";
+			};
+			name = Debug;
+		};
+		ADE3920728317B9F00044FE5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WT588WHFZU;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dhbw.RouteNavigatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RouteNavigator.app/RouteNavigator";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -418,6 +524,15 @@
 			buildConfigurations = (
 				49E7E863281FF8F600F32D5A /* Debug */,
 				49E7E864281FF8F600F32D5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADE3920828317B9F00044FE5 /* Build configuration list for PBXNativeTarget "RouteNavigatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ADE3920628317B9F00044FE5 /* Debug */,
+				ADE3920728317B9F00044FE5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -85,7 +85,6 @@ extension NavigationView {
     }
     
     private var distanceText: some View {
-        
         Text(verbatim: "Distance: \(Int(navigationViewModel.navigationDistance))m")
             .font(.title2)
             .fontWeight(.black)
@@ -97,7 +96,6 @@ extension NavigationView {
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
             .padding(6)
-
     }
     
     private var navigationPreviewStack: some View {

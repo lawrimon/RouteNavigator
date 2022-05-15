@@ -25,10 +25,10 @@ final class NavigationModel {
 
     init() {
         do {
-        self.client = try BoltClient(hostname: "6e2c8662.databases.neo4j.io",
+        self.client = try BoltClient(hostname: "3d7caec0.databases.neo4j.io",
                                     port: 7687,
                                     username: "neo4j",
-                                    password: "A1FB6-JR-I9bPgj9Rj8LkK-ONgGYxcFwn_v6LwJGYW8",
+                                    password: "nKtO5Z3vgY2n4Ilw5Bdqb8sPnAOBvqyNaUXAWMbk5n8",
                                     encryption: Encryption.certificateIsSelfSigned)
         } catch {
             print("Failed during connection configuration")
@@ -38,7 +38,7 @@ final class NavigationModel {
     func initNavigationPoints() -> [NavigationPoint]? {
         
         guard let client = self.client else {return nil}
-        let query = "Match(n: Intersection) RETURN n"
+        let query = "Match(n: realInter) RETURN n"
         var coordinates: [NavigationPoint] = []
         
         let result = client.connectSync()
