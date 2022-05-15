@@ -93,7 +93,7 @@ extension NavigationView {
             .frame(height: 55)
             .frame(maxWidth: 220)
             .animation(.none, value: navigationViewModel.navigationDistance)
-            .background(Color.gray.opacity(0.8))
+            .background(Color.gray)
             .cornerRadius(10)
             .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
             .padding(6)

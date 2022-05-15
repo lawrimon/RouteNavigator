@@ -59,7 +59,7 @@ extension NavigationPreviewView {
             Image(systemName: "globe")
                 .resizable()
                 .scaledToFill()
-                .foregroundColor(Color.gray.opacity(0.6))
+                .foregroundColor(Color.gray)
                 .frame(width: 90, height: 90)
                 //.cornerRadius(10)
                 .background(
