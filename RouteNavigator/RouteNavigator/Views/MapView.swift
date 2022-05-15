@@ -29,7 +29,7 @@ struct MapView: UIViewRepresentable {
         for annotation in mapView.annotations {
             if (annotation.coordinate.latitude == navigationViewModel.mapLocation.coordinate.latitude &&
                 annotation.coordinate.longitude == navigationViewModel.mapLocation.coordinate.longitude) {
-                mapView.selectAnnotation(annotation, animated: false)
+                    mapView.selectAnnotation(annotation, animated: false)
             }
         }
         

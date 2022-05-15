@@ -39,10 +39,10 @@ extension NavigationListView {
 
     private func listRowView(navigationPoint: NavigationPoint) -> some View {
         HStack {
-            Image(systemName: "mappin.square")
+            Image(systemName: "mappin.circle.fill")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 45, height: 45)
+                .frame(width: 40, height: 40)
                 .cornerRadius(10)
             VStack (alignment: .leading){
                 Text(verbatim: "\(navigationPoint.id)")

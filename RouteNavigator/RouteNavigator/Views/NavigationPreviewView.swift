@@ -56,18 +56,26 @@ extension NavigationPreviewView {
     
     private var imageSection: some View {
         ZStack {
-            Image(systemName: "map.circle")
+            Image(systemName: "globe")
                 .resizable()
                 .scaledToFill()
-                .foregroundColor(Color.black)
-                .frame(width: 100, height: 100)
-                .cornerRadius(10)
+                .foregroundColor(Color.gray.opacity(0.6))
+                .frame(width: 90, height: 90)
+                //.cornerRadius(10)
+                .background(
+                    RoundedRectangle(cornerRadius: 50)
+                        .fill(Color.white)
+                )
         }
-        .padding(6)
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 10)
+            .fill(Color.black)
+            .padding(4)
+        )
         .background(Color.white)
         .cornerRadius(10)
-    }
-    
+}
+                    
     private var titleSection: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(verbatim: "\(navigationPoint.id)")
@@ -89,7 +97,9 @@ extension NavigationPreviewView {
                 .font(.headline)
                 .frame(width: 125, height: 30)
         }
+        .tint(.green)
         .buttonStyle(.borderedProminent)
+        .disabled(navigationViewModel.mapLocation == navigationViewModel.navigationTuple.startPoint)
     }
     
     private var nextButton: some View {
@@ -101,6 +111,8 @@ extension NavigationPreviewView {
                 .frame(width: 125, height: 30)
         }
         .buttonStyle(.bordered)
+        .foregroundColor(.black)
+        
     }
     
     private var navigationButton: some View {
@@ -111,7 +123,7 @@ extension NavigationPreviewView {
                 .font(.headline)
                 .frame(width: 125, height: 50)
         }
-        .tint(.green)
+        .tint(.blue)
         .buttonStyle(.borderedProminent)
         .offset(y: -18)
     }

@@ -12,6 +12,7 @@ struct NavigationView: View {
     
     @EnvironmentObject private var navigationViewModel: NavigationViewModel
     
+    
     var body: some View {
         ZStack {
             //mapLayer
@@ -20,7 +21,10 @@ struct NavigationView: View {
             
             VStack(spacing: 0) {
                 header
-                    .padding()
+                    .padding(.horizontal)
+                if (navigationViewModel.navigationStarted) {
+                    distanceText
+                }
                 Spacer()
                 navigationPreviewStack
             }
@@ -48,11 +52,11 @@ extension NavigationView {
                     .frame(maxWidth: .infinity)
                     .animation(.none, value: navigationViewModel.mapLocation)
                     .overlay(alignment: .leading) {
-                        Image(systemName: "pin.circle")
-                            .font(.system(size: 35))
+                        Image(systemName: "arrow.down")
+                            .font(.system(size: 25))
                             .foregroundColor(.primary)
                             .padding()
-                            .rotationEffect(Angle(degrees: navigationViewModel.showNavigationList ? 360 : 0))
+                            .rotationEffect(Angle(degrees: navigationViewModel.showNavigationList ? 180 : 0))
                     }
             }
 
@@ -78,6 +82,22 @@ extension NavigationView {
                     }
             }
         })
+    }
+    
+    private var distanceText: some View {
+        
+        Text(verbatim: "Distance: \(Int(navigationViewModel.navigationDistance))m")
+            .font(.title2)
+            .fontWeight(.black)
+            .foregroundColor(.white)
+            .frame(height: 55)
+            .frame(maxWidth: 220)
+            .animation(.none, value: navigationViewModel.navigationDistance)
+            .background(.gray.opacity(0.8))
+            .cornerRadius(10)
+            .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
+            .padding(6)
+
     }
     
     private var navigationPreviewStack: some View {

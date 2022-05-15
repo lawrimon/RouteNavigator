@@ -65,11 +65,13 @@ final class NavigationModel {
         return coordinates
     }
     
-    func getRoute(start: NavigationPoint, target: NavigationPoint) -> [NavigationPoint]? {
+    func getRoute(start: NavigationPoint, target: NavigationPoint) -> ([NavigationPoint]?, Double?) {
         
-        guard let client = self.client else {return nil}
-        let query = "MATCH(start: Intersection {node_osm_id:\(start.id)}) WITH start MATCH (end: Intersection {node_osm_id:\(target.id)}) CALL apoc.algo.dijkstra(start,end, 'ROUTE', 'distance') YIELD path with nodes(path) as nodes WITH apoc.coll.pairsMin(nodes) as pairs UNWIND pairs as p WITH p[0] as a, p[1] as b WITH a,b MATCH(a)-[:NODE]-(awn)-[:NEXT*1..50]-(bwn)-[:NODE]-(b) WITH awn,bwn MATCH path = allShortestPaths( (awn)-[:NEXT*1..50]-(bwn) ) WITH nodes(path) as xwn UNWIND xwn as xosmn MATCH(xosmn)-[:NODE]-(x:OSMNode) RETURN x"
+        guard let client = self.client else {return (nil, nil)}
+        /*let query = "MATCH(start: Intersection {node_osm_id:\(start.id)}) WITH start MATCH (end: Intersection {node_osm_id:\(target.id)}) CALL apoc.algo.dijkstra(start,end, 'ROUTE', 'distance') YIELD path with nodes(path) as nodes WITH apoc.coll.pairsMin(nodes) as pairs UNWIND pairs as p WITH p[0] as a, p[1] as b WITH a,b MATCH(a)-[:NODE]-(awn)-[:NEXT*1..50]-(bwn)-[:NODE]-(b) WITH awn,bwn MATCH path = allShortestPaths( (awn)-[:NEXT*1..50]-(bwn) ) WITH nodes(path) as xwn UNWIND xwn as xosmn MATCH(xosmn)-[:NODE]-(x:OSMNode) RETURN x"*/
+        let query = "MATCH(start: Intersection {node_osm_id:\(start.id)}) WITH start MATCH (end: Intersection {node_osm_id:\(target.id)}) CALL apoc.algo.dijkstra(start,end, 'ROUTE', 'distance') YIELD path, weight WITH nodes(path) as nodes,weight WITH weight, apoc.coll.pairsMin(nodes) as pairs UNWIND pairs as p WITH weight, p[0] as a, p[1] as b WITH weight, a,b MATCH(a)-[:NODE]-(awn)-[:NEXT*1..50]-(bwn)-[:NODE]-(b) WITH weight, awn,bwn MATCH path = allShortestPaths( (awn)-[:NEXT*1..50]-(bwn) ) WITH weight, nodes(path) as xwn UNWIND xwn as xosmn MATCH(xosmn)-[:NODE]-(x:OSMNode) RETURN x, weight"
         var route: [NavigationPoint] = []
+        var weight: Double = .zero
         
         let result = client.connectSync()
         switch result {
@@ -90,9 +92,11 @@ final class NavigationModel {
                             longitude: (key_value["x"] as! Theo.Node).properties["lon"] as! CLLocationDegrees),
                         id: ((key_value["x"] as! Theo.Node).properties["node_osm_id"]!.intValue())!))
                 }
+                print("Weight: \(queryResult.rows.first!["weight"] as! Double)")
+                weight = queryResult.rows.first!["weight"] as! Double
             }
         }
-        return route
+        return (route, weight)
     }
 
 }

@@ -16,10 +16,6 @@ final class NavigationViewModel: ObservableObject {
     // All navigation points
     var navigationPoints: [NavigationPoint]
     
-    // Navigation route
-    var navigationRoute: [CLLocationCoordinate2D] = []
-    var navigationLine: MKPolyline
-    
     // Current navigation point
     @Published var mapLocation: NavigationPoint {
         didSet {
@@ -28,10 +24,17 @@ final class NavigationViewModel: ObservableObject {
     }
     
     // Navigation tuple for route algorithm
-    var navigationTuple: (startPoint: NavigationPoint, targetPoint: NavigationPoint)
+    var navigationTuple: (startPoint: NavigationPoint, targetPoint: NavigationPoint) = (NavigationPoint(coordinate: CLLocationCoordinate2D(), id: 0),
+                                                                                        NavigationPoint(coordinate: CLLocationCoordinate2D(), id: 0))
     private var startPoint: Bool = true
     @Published var targetPoint: Bool = false
     @Published var navigationText: String = "Start point"
+    
+    // Navigation route
+    var navigationRoute: [CLLocationCoordinate2D] = []
+    var navigationLine: MKPolyline = MKPolyline()
+    var navigationDistance: Double = .zero
+    @Published var navigationStarted: Bool = false
     
     // Current region on map
     @Published var mapRegion: MKCoordinateRegion = MKCoordinateRegion()
@@ -44,11 +47,9 @@ final class NavigationViewModel: ObservableObject {
         let navigationPoints = navigationModel.initNavigationPoints()!
         self.navigationPoints = navigationPoints
         self.mapLocation = navigationPoints.first!
-        // Just placeholder initialization of navigationTuple and navigationLine
-        self.navigationTuple = (navigationPoints.first!, navigationPoints.first!)
-        self.navigationLine = MKPolyline()
         
         self.updateMapRegion(navigationPoint: navigationPoints.first!)
+        
     }
     
     private func updateMapRegion(navigationPoint: NavigationPoint) {
@@ -94,6 +95,9 @@ final class NavigationViewModel: ObservableObject {
         // Get current navigation point
         let currentPoint = mapLocation
         if startPoint {
+            navigationLine = MKPolyline()
+            navigationStarted = false
+            updateMapRegion(navigationPoint: currentPoint)
             navigationTuple.startPoint = currentPoint
             startPoint = false
             navigationText = "Target point"
@@ -102,17 +106,21 @@ final class NavigationViewModel: ObservableObject {
             navigationTuple.targetPoint = currentPoint
             targetPoint = true
             print("Target: \(navigationTuple.targetPoint.id)")
+
         }
         
     }
     
     func navigationButtonPressed() {
         navigationRoute.removeAll()
-        let route = navigationModel.getRoute(start: navigationTuple.startPoint, target: navigationTuple.targetPoint)!
-        for point in route {
+        let route = navigationModel.getRoute(start: navigationTuple.startPoint, target: navigationTuple.targetPoint)
+        let routePoints = route.0!
+        navigationDistance = route.1!
+        for point in routePoints {
             navigationRoute.append(point.coordinate)
         }
         navigationLine = MKPolyline(coordinates: navigationRoute, count: navigationRoute.count)
+        navigationStarted = true
         
         var regionRect = (navigationLine.boundingMapRect)
         let wPadding = regionRect.size.width * 0.25
@@ -126,7 +134,16 @@ final class NavigationViewModel: ObservableObject {
         regionRect.origin.x -= wPadding / 2
         regionRect.origin.y -= hPadding / 2
         
+        // Reset actions for new navigation
+        navigationText = "Start point"
+        startPoint = true
+        targetPoint = false
+        navigationTuple = (NavigationPoint(coordinate: CLLocationCoordinate2D(), id: 0),
+                           NavigationPoint(coordinate: CLLocationCoordinate2D(), id: 0))
+        
+        // Center the map on the route
         mapRegion = MKCoordinateRegion(regionRect)
+        
     }
     
 }
