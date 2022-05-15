@@ -1,0 +1,59 @@
+{
+  "pins" : [
+    {
+      "identity" : "bolt-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Neo4j-Swift/Bolt-swift.git",
+      "state" : {
+        "revision" : "9858a43c9a26373d64069a6f046db5ab45db4cb0",
+        "version" : "5.2.0"
+      }
+    },
+    {
+      "identity" : "neo4j-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Neo4j-Swift/Neo4j-Swift",
+      "state" : {
+        "branch" : "dev/5.2.1",
+        "revision" : "944951bd8dd395a43b6c73abd217239ffc9a29df"
+      }
+    },
+    {
+      "identity" : "packstream-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Neo4j-Swift/PackStream-swift.git",
+      "state" : {
+        "revision" : "8befde3d9ea6cf2561d0fd7aeef96c3ff11751d4",
+        "version" : "1.1.2"
+      }
+    },
+    {
+      "identity" : "swift-nio",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-nio.git",
+      "state" : {
+        "revision" : "124119f0bb12384cef35aa041d7c3a686108722d",
+        "version" : "2.40.0"
+      }
+    },
+    {
+      "identity" : "swift-nio-ssl",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-nio-ssl.git",
+      "state" : {
+        "revision" : "1750873bce84b4129b5303655cce2c3d35b9ed3a",
+        "version" : "2.19.0"
+      }
+    },
+    {
+      "identity" : "swift-nio-transport-services",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-nio-transport-services.git",
+      "state" : {
+        "revision" : "1a4692acb88156e3da1b0c6732a8a38b2a744166",
+        "version" : "1.12.0"
+      }
+    }
+  ],
+  "version" : 2
+}
