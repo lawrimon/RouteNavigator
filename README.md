@@ -16,4 +16,4 @@ Swift application with a Neo4j graph database backend to solve some exciting rou
 
 ## Installation :floppy_disk:
 
-Open the Swift project in XCode and run the emulator
+Open [`RouteNavigator/RouteNavigator.xcodeproj`](RouteNavigator/RouteNavigator.xcodeproj) in XCode and run the emulator
