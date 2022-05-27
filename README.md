@@ -1,4 +1,4 @@
-# RouteNavigator
+# RouteNavigator :round_pushpin:
 
 Swift application with a Neo4j graph database backend to solve some exciting route finding & navigation challenges :earth_africa:
 
