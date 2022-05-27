@@ -57,7 +57,6 @@ class RouteNavigatorTests: XCTestCase {
             print("testNeo4jConnection: Success while connecting")
             test = true
         }
-        test = false
         XCTAssertTrue(test)
     }
 
