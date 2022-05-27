@@ -17,3 +17,8 @@ Swift application with a Neo4j graph database backend to solve some exciting rou
 ## Installation :floppy_disk:
 
 Open [`RouteNavigator/RouteNavigator.xcodeproj`](RouteNavigator/RouteNavigator.xcodeproj) in XCode and run the emulator
+
+The Neo4j database is hosted via Free AuraDB, so the following restrictions apply:
+- 1 forever instance
+- Limits on graph size (50k nodes, 175k relations)
+- Auto-pause after 3 days of inactivity
