@@ -16,7 +16,10 @@ Swift application with a Neo4j graph database backend to solve some exciting rou
 
 ## Installation :floppy_disk:
 
-Open [`RouteNavigator/RouteNavigator.xcodeproj`](RouteNavigator/RouteNavigator.xcodeproj) in XCode and run the emulator
+- Open [`RouteNavigator/RouteNavigator.xcodeproj`](RouteNavigator/RouteNavigator.xcodeproj) in XCode and run the emulator
+- To run the unit-tests use the unit-test tab of XCode
+
+## Neo4J Database :card_index_dividers:
 
 The Neo4j database is hosted via Free AuraDB, so the following restrictions apply:
 - 1 forever instance
