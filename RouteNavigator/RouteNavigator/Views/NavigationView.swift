@@ -8,10 +8,14 @@
 import SwiftUI
 import MapKit
 
+
+
 struct NavigationView: View {
     
     @EnvironmentObject private var navigationViewModel: NavigationViewModel
     
+    @State var isTrue = true
+
     
     var body: some View {
         ZStack {
@@ -85,18 +89,41 @@ extension NavigationView {
     }
     
     private var distanceText: some View {
-        Text(verbatim: "Distance: \(Int(navigationViewModel.navigationDistance))m")
-            .font(.title2)
-            .fontWeight(.black)
-            .foregroundColor(.white)
-            .frame(height: 55)
-            .frame(maxWidth: 220)
-            .animation(.none, value: navigationViewModel.navigationDistance)
-            .background(Color.gray)
-            .cornerRadius(10)
-            .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
-            .padding(6)
-    }
+
+        Button(action: {
+            isTrue.toggle()
+            
+        }){
+            
+            if isTrue {
+                Text(verbatim: "Distance: \(Int(navigationViewModel.navigationDistance))m")
+                    .font(.title2)
+                    .fontWeight(.black)
+                    .foregroundColor(.white)
+                    .frame(height: 55)
+                    .frame(maxWidth: 220)
+                    .animation(.none, value: navigationViewModel.navigationDistance)
+                    .background(Color.gray)
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
+                    .padding(6)
+                        }
+            else {
+                
+                Label(" \(Int(navigationViewModel.navigationDistance)/60) minutes ", systemImage:  "figure.walk")
+                    .font(.largeTitle)
+                    .frame(height: 55)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: 220)
+                    .animation(.none, value: navigationViewModel.navigationDistance)
+                    .background(Color.gray)
+                    .cornerRadius(10)
+                    .shadow(color: Color.black.opacity(0.3), radius: 20, x: 0, y: 15)
+                    .padding(6)
+            }
+
+            }
+        }
     
     private var navigationPreviewStack: some View {
         ZStack {
